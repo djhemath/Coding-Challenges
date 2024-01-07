@@ -2,8 +2,8 @@
 
 const { ListNode } = require("../common/linked-list");
 
-// T - O(n)
-// S - O(n)
+// T - O(m+n)
+// S - O(m)
 function getIntersectionNode(headA, headB) {
   const list1VisitedNodes = new Set();
 
