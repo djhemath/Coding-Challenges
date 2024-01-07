@@ -27,6 +27,35 @@ function getIntersectionNode(headA, headB) {
   return null;
 }
 
+// T - O(m+n)
+// S - O(1)
+function getIntersectionNodeSpaceOptimized(headA, headB) {
+  let currentNode1 = headA;
+  let currentNode2 = headB;
+
+  let i=0;
+
+  while(currentNode1 !== currentNode2) {
+    i+=1
+    if(currentNode1) {
+      currentNode1 = currentNode1.next;
+    } else {
+      currentNode1 = headB;
+    }
+
+    if(currentNode2) {
+      currentNode2 = currentNode2.next;
+    } else {
+      currentNode2 = headA;
+    }
+  }
+
+  console.log(i)
+
+  return currentNode1;
+}
+
+
 const test1CommonNode1 = new ListNode(8);
 const test1CommonNode2 = new ListNode(4);
 const test1CommonNode3 = new ListNode(5);
@@ -51,9 +80,11 @@ test1List2Node1.next = test1List2Node2;
 test1List2Node2.next = test1List2Node3;
 test1List2Node3.next = test1CommonNode1;
 
-const test1Result1 = getIntersectionNode(test1List1Node1, test1List2Node1);
+// const test1Result1 = getIntersectionNode(test1List1Node1, test1List2Node1);
+const test1Result2 = getIntersectionNodeSpaceOptimized(test1List1Node1, test1List2Node1);
 
-console.log(test1Result1 === test1CommonNode1);
+// console.log(test1Result1 === test1CommonNode1);
+console.log(test1Result2 === test1CommonNode1);
 
 
 
@@ -77,9 +108,11 @@ const test2List2Node1 = new ListNode(3);
 
 test2List2Node1.next = test2CommonNode1;
 
-const test2Result1 = getIntersectionNode(test2List1Node1, test2List2Node1);
+// const test2Result1 = getIntersectionNode(test2List1Node1, test2List2Node1);
+const test2Result2 = getIntersectionNodeSpaceOptimized(test2List1Node1, test2List2Node1);
 
-console.log(test2Result1 === test2CommonNode1);
+// console.log(test2Result1 === test2CommonNode1);
+console.log(test2Result2 === test2CommonNode1);
 
 
 
@@ -98,6 +131,8 @@ const test3List2Node2 = new ListNode(5);
 test3List2Node1.next = test3List2Node2;
 test3List2Node2.next = null;
 
-const test3Result1 = getIntersectionNode(test3List1Node1, test3List2Node1);
+// const test3Result1 = getIntersectionNode(test3List1Node1, test3List2Node1);
+const test3Result2 = getIntersectionNodeSpaceOptimized(test3List1Node1, test3List2Node1);
 
-console.log(test3Result1 === null);
+// console.log(test3Result1 === null);
+console.log(test3Result2 === null);
