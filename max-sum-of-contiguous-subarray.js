@@ -30,3 +30,27 @@ function maxSumOfContigousSubArray(array = []) {
 }
 
 console.log(maxSumOfContigousSubArray([4, 2, 1, 7, 8, 1, 2, 8, 1, 0]) === 16)
+
+
+
+function maxSumOfContigousSubArray2(array = [], k) {
+  let maxSum = 0;
+  let currentSum = 0;
+
+  for(let i=0; i<array.length; i++) {
+    if(i < k) {
+      currentSum += array[i];
+    } else {
+      currentSum = currentSum - array[i-k] + array[i];
+    }
+
+    if(currentSum > maxSum) {
+      maxSum = currentSum;
+    }
+
+  }
+
+  return maxSum;
+}
+
+console.log(maxSumOfContigousSubArray2([4, 2, 1, 7, 8, 1, 2, 8, 1, 0], 3) === 16)
